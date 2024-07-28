@@ -10,6 +10,7 @@ using namespace std;
 #define pb push_back
 #define mp make_pair
 #define F first 
+#define unmp unordered_map<int,int>
 #define S second 
 #define all(x) = x.begin(),x.end()
 #define sortasc(x) sort(all(x))
@@ -18,23 +19,25 @@ using namespace std;
 const int mod = 1000000007;
 
 void solve(){
-    string s;
-    cin >> s;
-    int n = s.size();
-    vi arr(n+1);    // storing the prefix sum 
-    arr[0] = 0;
+    int n,m ,k ;
+    cin >> n >> m >> k;
+    vi left(n);
+    vi right(m);
     for(int i=0;i<n;i++){
-        int c = s[i] == '1' ? 1 : -1;
-        arr[i+1] = arr[i] + c;
+        cin>> left[i];
     }
-    unordered_map<int,int> mpp;
-    ll ans =0;
-    for(int i=0;i<=n;i++){
-        int x = arr[i];
-        ans += (n+1-i)*(mpp[x]);
-        mpp[x]+= i+1;  // storing the indices with pref[x] == pref[y]
+    for(int i=0;i<m;i++){
+        cin>> right[i];
     }
-    cout << ans << endl;
+    int cnt =0;
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            if(left[i]+right[j]<=k){
+                cnt++;
+            }
+        }
+    }
+    cout << cnt<< endl;
 }
 int main(){
     ios_base::sync_with_stdio(false);
@@ -46,3 +49,5 @@ int main(){
     }
     return 0;
 }
+
+
