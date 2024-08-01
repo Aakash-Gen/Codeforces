@@ -18,6 +18,14 @@ using namespace std;
 #define PI 3.1415926535897932384626
 const int mod = 1000000007;
 
+
+void dfs(int start, vector<vector<int>> &adj){
+    for(auto it: adj[start]){
+        if(adj[it+1].empty()){
+            
+        }
+    }
+}
 void solve(){
     int n;
     cin >> n;
@@ -31,12 +39,10 @@ void solve(){
     }
     vector<vector<int>> adj;
     for(int i=0;i<n-1;i++){
-        adj[a[p[i]-1]].push_back(a[i+1]);
+        adj[p[i]].push_back(i+1);
     }
-    for(int i=0;i<adj.size();i++){
-        for(int j=0;j<adj[0].size();j++){
-            cout << adj[i][j] << endl;
-        }
+    for(int i=1;i<=n;i++){
+        dfs(i,adj);
     }
 }
 int main(){

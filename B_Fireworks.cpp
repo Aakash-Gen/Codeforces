@@ -19,39 +19,21 @@ using namespace std;
 const int mod = 1000000007;
 
 void solve(){
-    int n;
-    cin >> n;
-    vi arr(n);
-    for(int i=0;i<n;i++){
-        cin >> arr[i];
-    }
-    int op = arr[0];
-    bool found = false;
-    for(int i=1;i<n-1;i++){
-        arr[i] = arr[i] - 2*op;
-        arr[i-1]-= op;
-        arr[i+1]-=op;
-        op = arr[i];
-        if(arr[i]<0){
-            found = true;
-            break;
-        }
-    }
-    if(found){
-        cout << "NO" << endl;
-        return;
-    }
-    for(int i=0;i<n;i++){
-        if(arr[i]!=0){
-            found = true;
-            break;
-        }
-    }
-    if(found){
-        cout << "NO" << endl;
+    ll a,b,m;
+    cin >> a >> b >> m;
+    m=m+1;
+    ll ans =0;
+    if(m%a==0){
+        ans+=m/a;
     } else {
-        cout << "YES" << endl;
+        ans+= m/a +1;
     }
+    if(m%b==0){
+        ans+= m/b;
+    } else {
+        ans+= m/b+1;
+    }
+    cout << ans << endl;
 }
 int main(){
     ios_base::sync_with_stdio(false);
