@@ -11,7 +11,7 @@ using namespace std;
 #define mp make_pair
 #define F first 
 #define S second 
-#define all(x) = x.begin(),x.end()
+#define all(x) x.begin(),x.end()
 #define sortasc(x) sort(all(x))
 #define sortdes(x) sort(x.rbegin(),x.rend())
 #define PI 3.1415926535897932384626
