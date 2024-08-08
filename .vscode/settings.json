@@ -7,6 +7,9 @@
         "algorithm": "cpp",
         "ostream": "cpp",
         "list": "cpp",
-        "xiosbase": "cpp"
-    }
+        "xiosbase": "cpp",
+        "map": "cpp",
+        "cmath": "cpp"
+    },
+    "cph.general.defaultLanguage": "cpp",
 }

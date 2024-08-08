@@ -4,7 +4,7 @@ using namespace std;
 #define pii pair<int,int>
 #define vpii vector<pair<int,int>>
 #define vi vector<int>
-#define vvi vector<vectorint>>
+#define vvi vector<vector<int>>
 #define vl vector<long long>
 #define vvl vector<vector<long long>>
 #define pb push_back
@@ -12,37 +12,39 @@ using namespace std;
 #define F first 
 #define unmp unordered_map<int,int>
 #define S second 
-#define all(x) = x.begin(),x.end()
+#define all(x) x.begin(),x.end()
 #define sortasc(x) sort(all(x))
 #define sortdes(x) sort(x.rbegin(),x.rend())
 #define PI 3.1415926535897932384626
 const int mod = 1000000007;
 
+int divide( double a , const double b){
+
+    ll temp = 0;
+    while(a >= b){
+        temp++;
+        a -= b;
+    }
+    return temp;
+}
+
 void solve(){
-    string s;
-    cin >> s;
-    string ans ="";
-    ans+=s[0];
-    bool insert = false;
-    for(int i=1;i<s.size();i++){
-        if(insert==false && s[i]==s[i-1]){
-            if(s[i]!='a'){
-                ans+= s[i]-1;
-            } else {
-                ans+= s[i]+1;
-            }
-            insert = true;
-        }
-        ans+=s[i];
+    int l , r;
+    cin >> l >> r;
+    vl arr(r-l+1,0);
+    ll cnt =0;
+    for(int i=l;i<=r;i++){
+        arr[i-l] = i;
     }
-    if(!insert){
-        if(s[s.size()-1]!='a'){
-            ans+= s[s.size()-1]-1;
-        } else {
-            ans+= s[s.size()-1]+1;
-        }
+    while(arr[0]!=0){
+        arr[0] /= 3;
+        arr[1] *=3;
+        cnt++;
     }
-    cout << ans << endl;
+    for(int i=1;i<r-l+1;i++){
+        cnt+= divide(log10(arr[i]),log10(3))+1;
+    }
+    cout << cnt << endl;
 }
 int main(){
     ios_base::sync_with_stdio(false);
